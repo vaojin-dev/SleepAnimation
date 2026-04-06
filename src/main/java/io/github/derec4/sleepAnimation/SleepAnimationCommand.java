@@ -17,6 +17,11 @@ public class SleepAnimationCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // ensure this executor only handles the 'sleepanimation' command
+        if (!command.getName().equalsIgnoreCase("sleepanimation")) {
+            return false;
+        }
+
         if (args.length == 0) {
             sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " reload");
             return true;
@@ -46,4 +51,3 @@ public class SleepAnimationCommand implements CommandExecutor {
         return true;
     }
 }
-
