@@ -2,6 +2,7 @@ package io.github.derec4.sleepAnimation;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SleepAnimation extends JavaPlugin {
@@ -14,6 +15,13 @@ public final class SleepAnimation extends JavaPlugin {
         timeSkipper = new TimeSkipper(this, ConfigManager.getSkipSpeed(), 0);
         timeSkipper.start();
         getServer().getPluginManager().registerEvents(new SleepListener(this), this);
+
+        // register base command 'sleepanimation' and handle subcommands (reload)
+        PluginCommand sleepCmd = getCommand("sleepanimation");
+
+        if (sleepCmd != null) {
+            sleepCmd.setExecutor(new SleepAnimationCommand(this));
+        }
 
         Bukkit.getLogger().info("");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|                             " +
@@ -32,5 +40,9 @@ public final class SleepAnimation extends JavaPlugin {
 
     public TimeSkipper getTimeSkipper() {
         return timeSkipper;
+    }
+
+    public void setTimeSkipper(TimeSkipper timeSkipper) {
+        this.timeSkipper = timeSkipper;
     }
 }

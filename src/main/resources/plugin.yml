@@ -7,3 +7,14 @@ authors: [ DerexXD ]
 description:
   Simple: Adds an animation while the night is skipped by players sleeping, making things really more immersive!
 website: https://github.com/DereC4
+
+commands:
+  sleepanimation:
+    description: Main command for SleepAnimation
+    usage: /<command> reload
+    aliases: [ sa ]
+
+permissions:
+  SleepAnimation.reload:
+    description: Allows reloading the SleepAnimation plugin
+    default: op
