@@ -3,3 +3,7 @@
 # Default: 50
 skip-speed: 50
 
+# Whether players should be instantly forced out of bed when the sleep animation begins
+# If false, players remain in bed for the whole animation duration
+# Default: false
+instant-wakeup: false

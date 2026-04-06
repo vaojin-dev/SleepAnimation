@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.world.TimeSkipEvent;
+import org.bukkit.entity.Player;
 
 public class SleepListener implements Listener {
 
@@ -19,6 +20,14 @@ public class SleepListener implements Listener {
             event.setCancelled(true);
 //            Bukkit.getLogger().info("Playing night skip animation");
             plugin.getTimeSkipper().startAnimation(event.getWorld());
+
+            if (ConfigManager.isInstantWakeup()) {
+                for (Player player : event.getWorld().getPlayers()) {
+                    if (player.isSleeping()) {
+                        player.wakeup(false);
+                    }
+                }
+            }
         }
     }
 }
