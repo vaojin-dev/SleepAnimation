@@ -34,6 +34,7 @@ public class SleepAnimationCommand implements CommandExecutor {
             }
 
             // reload config and restart the TimeSkipper with new settings
+            plugin.reloadConfig();
             ConfigManager.loadConfig(plugin);
             TimeSkipper old = plugin.getTimeSkipper();
             if (old != null) {
