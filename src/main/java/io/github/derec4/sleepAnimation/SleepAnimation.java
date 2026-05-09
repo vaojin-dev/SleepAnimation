@@ -51,9 +51,14 @@ public final class SleepAnimation extends JavaPlugin {
     }
 
     private boolean shouldUseModernTimeSkipListener() {
-        return isPaperVersionAtLeast("26.1.2") || hasClockTimeSkipEventClass();
+        return isPaperVersionAtLeast("26.1") || hasClockTimeSkipEventClass();
     }
 
+    /**
+     * probably a better way to do this
+     * @param minVersion
+     * @return
+     */
     private boolean isPaperVersionAtLeast(String minVersion) {
         String bukkitVersion = Bukkit.getServer().getBukkitVersion();
         if (bukkitVersion == null) {
